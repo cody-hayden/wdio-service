@@ -60,11 +60,11 @@ exports.config = {
         // 5 instances get started at a time.
         maxInstances: 5,
         //
-        browserName: 'chrome',
+        browserName: 'MicrosoftEdge',
         acceptInsecureCerts: true,
-         'goog:chromeOptions': {
-             args: ['--headless', '--disable-gpu']
-         }
+        //  'goog:chromeOptions': {
+        //      args: ['--headless', '--disable-gpu']
+        //  }
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -77,7 +77,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'error',
+    logLevel: 'info',
     //
     // Set specific log levels per logger
     // loggers:
@@ -117,7 +117,9 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver', [EyesService, {
+    enableEyesLogs: true,
+
+    services: ['edgedriver', [EyesService, {
         useVisualGrid: true,
         browsersInfo: [
             {width: 1200, height: 800, name: 'chrome'},
@@ -258,8 +260,9 @@ exports.config = {
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+     afterTest: function(test, context, result) {
+
+     },
 
 
     /**
